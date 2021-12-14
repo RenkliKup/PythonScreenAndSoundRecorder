@@ -16,7 +16,7 @@ import ffmpeg
 from filesAndFolders import create_path_yaml,create_video_folder,remove_file,create_audio_devices_yaml,read_control_txt,create_main_folder,create_control_txt
 from hostIndex import get_host_indexes
 create_main_folder()
-class RecorderPython():
+class RecorderPython(SMWinservice):
     global w,h,log_path,video_path,audio_clip_path,clip_path,dir,mic_path,logger
     
     create_control_txt()
@@ -184,4 +184,4 @@ class RecorderPython():
                 
                 self.thread()
 if __name__=="__main__":
-    RecorderPython().main()
+    RecorderPython.parse_command_line()
