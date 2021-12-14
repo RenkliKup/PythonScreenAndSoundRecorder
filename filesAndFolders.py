@@ -1,11 +1,12 @@
 import os 
 import yaml
+from pathlib import Path
 def create_hosts_yaml():
     os.chdir("C:/RecordProgram/")
     if not os.path.exists("recorder.yaml"):
         with open("recorder.yaml","w",encoding="utf-8") as f:
-            f.writelines("host_name_en: Stereo Mix\n")
-            f.writelines("host_name_tr: Stereo Karışımı\n")
+            f.writelines("host_name_en: Stereo Mix (Realtek High Defini\n")
+            f.writelines("host_name_tr: Stereo Karışımı (Realtek High Defini\n")
             f.writelines("mme: MME")
         hosts=yaml.full_load(open("recorder.yaml","r",encoding="utf-8"))
         return hosts
@@ -40,8 +41,8 @@ def create_audio_devices_yaml(pyaudio):
                 device=pyaudio.get_device_info_by_index(i)
                 f.writelines("index:"+str(device["index"])+" name:"+device["name"]+"\n")
 
-def create_control_txt(path):
-    os.chdir("C:/RecordProgram")
+def create_control_txt():
+    os.chdir("C:/RecordProgram/")
     with open("control.txt","w") as f:
         f.write("0")
         
@@ -50,7 +51,10 @@ def read_control_txt():
     os.chdir("C:/RecordProgram")
     with open("control.txt","r") as f:
         num=f.read()
-    return num
+    if num=="0":
+            return 0
+    else :
+            return 1
 
 def create_main_folder():
     os.chdir("C:/")
@@ -67,6 +71,16 @@ def create_video_folder():
         os.mkdir("video")
         
         
-    
-    
+def remove_file(dir):
+        try:
+            filenames = []
+            for i in ["*.avi", "*.wav"]:
+                filenames.extend([x for x in Path(dir+"video").glob("{}".format(i))])
+            for j in range(len(filenames)):
+                try:
+                    os.remove(str(filenames[j]))
+                except :
+                    continue
+        except Exception as e:
+            pass
     
