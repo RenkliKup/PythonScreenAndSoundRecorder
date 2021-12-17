@@ -53,7 +53,7 @@ def read_control_txt():
         num=f.read()
     if num=="0":
             return 0
-    else :
+    elif num=="1":
             return 1
 
 def create_main_folder():
