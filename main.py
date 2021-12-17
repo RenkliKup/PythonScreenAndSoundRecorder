@@ -111,7 +111,7 @@ class RecorderPython(SMWinservice):
                 stream.close()
                 p.terminate()
         except Exception as e:
-            logger.error(str("Error Ocurred in Voice Record"))
+            logger.error(str("Error_Ocurred_in_Voice_Record"))
             
 
     def thread(self):
@@ -124,7 +124,7 @@ class RecorderPython(SMWinservice):
             self.t2.join()
             
         except Exception as e:
-            logger.error(str("Error Ocurred in Threads"))
+            logger.error(str("Error_Ocurred_in_Threads"))
         
 
     def setDuration(self):
