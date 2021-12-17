@@ -71,11 +71,11 @@ class RecorderPython(SMWinservice):
             self.combine()
             
         except Exception as e:
-            logger.error(str(e.message))
+            logger.error(str("Error Ocurred in Video Record"))
 
     def voice_record(self):
         
-            
+        try:
                 
                 remove_file(dir)
                 CHUNK = 1024
@@ -110,6 +110,8 @@ class RecorderPython(SMWinservice):
                 stream.stop_stream()
                 stream.close()
                 p.terminate()
+        except Exception as e:
+            logger.error(str("Error Ocurred in Voice Record"))
             
 
     def thread(self):
@@ -122,7 +124,7 @@ class RecorderPython(SMWinservice):
             self.t2.join()
             
         except Exception as e:
-            logger.error(str(e))
+            logger.error(str("Error Ocurred in Threads"))
         
 
     def setDuration(self):
@@ -148,7 +150,7 @@ class RecorderPython(SMWinservice):
                     self.file_exist = self.file_exist + 1
             
         except Exception as e:
-            logger.error(str(e))
+            logger.error(str("error occurred in setDuration"))
     def combine(self) :
         try:
             t = str(time.strftime('%X').replace(':', '.').replace("/", ".").replace("\\", "."))
@@ -174,10 +176,10 @@ class RecorderPython(SMWinservice):
                 output_mp4=ffmpeg.output(audio_stream, video_stream,mp4_name)
                 ffmpeg.run(output_mp4)
                 remove_file(dir)
-                logger.error(str("microfon dosyasi yok"))
+                logger.error(str("there arent any microphone file"))
         except Exception as e:
             
-            logger.error(str(e))
+            logger.error(str("error occured in combine"))
     def main(self):
         while True:        
             if read_control_txt()==1:
