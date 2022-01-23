@@ -1,4 +1,3 @@
-
 import filesAndFolders
 def get_host_indexes(p):
     hosts=filesAndFolders.create_hosts_yaml()
@@ -8,5 +7,4 @@ def get_host_indexes(p):
         for j in hosts.values():
             if (j in devices(i)["name"]):
                 host_index.append(devices(i)["index"])
-    return host_index       
-                
+    return host_index  

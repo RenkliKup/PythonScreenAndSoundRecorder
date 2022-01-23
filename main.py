@@ -111,7 +111,7 @@ class RecorderPython(SMWinservice):
                 stream.close()
                 p.terminate()
         except Exception as e:
-            logger.error(str("Error_Ocurred_in_Voice_Record"))
+            logger.error(str("Error Ocurred in Voice Record"))
             
 
     def thread(self):
@@ -124,7 +124,7 @@ class RecorderPython(SMWinservice):
             self.t2.join()
             
         except Exception as e:
-            logger.error(str("Error_Ocurred_in_Threads"))
+            logger.error(str("Error Ocurred in Threads"))
         
 
     def setDuration(self):
@@ -178,7 +178,6 @@ class RecorderPython(SMWinservice):
                 remove_file(dir)
                 logger.error(str("there arent any microphone file"))
         except Exception as e:
-            
             logger.error(str("error occured in combine"))
     def main(self):
         while True:        

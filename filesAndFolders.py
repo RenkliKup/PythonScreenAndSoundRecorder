@@ -5,9 +5,9 @@ def create_hosts_yaml():
     os.chdir("C:/RecordProgram/")
     if not os.path.exists("recorder.yaml"):
         with open("recorder.yaml","w",encoding="utf-8") as f:
+            f.writelines("mc_sound_mapper: Microsoft Sound Mapper - Input\n")
             f.writelines("host_name_en: Stereo Mix (Realtek High Defini\n")
             f.writelines("host_name_tr: Stereo Karışımı (Realtek High Defini\n")
-            f.writelines("mme: MME")
         hosts=yaml.full_load(open("recorder.yaml","r",encoding="utf-8"))
         return hosts
     hosts=yaml.full_load(open("recorder.yaml","r",encoding="utf-8"))
